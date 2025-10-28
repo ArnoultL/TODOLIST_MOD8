@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text>Welcome to our to do list web site !</h1>
+    <h1>Welcome to our to do list web site !</h1>
     <p>In this to do list, you can select your tasks and directly add it to your list!</p>
     <p>Join the team !</p>
 
