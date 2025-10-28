@@ -7,6 +7,7 @@ import Home from '../views/Home.vue'
 import Wel from '../views/Welcome.vue'
 
 const routes = [
+  { path: '/', name: 'Welcome', component: Welcome },
   { path: '/login', name: 'Login', component: Login },
   {path : '/register', name:'register', component: Register},
   {path : '/home', name : 'home', component : Home},
