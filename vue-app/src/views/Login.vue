@@ -1,12 +1,16 @@
 <template>
     <div >
         <h1>Login</h1>
+        <div class="card">
         <div>
             <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
         </div>
         <div>
-            <button class="button button--disabled">Login</button>
+            <input type="password" placeholder="Password"/>
+        </div>
+        </div>
+        <div>
+            <button class="button button--disabled" @click="logedIn">Login</button>
         </div>
         <div>
         <p>Do not have an account yet ?</p>
@@ -14,3 +18,21 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    components : {
+        Home,
+
+    },
+    data (){
+        return {
+            loged : false,
+        }
+    },
+    methods : {
+        logedIn(){
+            this.loged = true;
+        }
+    },
+}
+</script>
