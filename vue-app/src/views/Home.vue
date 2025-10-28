@@ -1,10 +1,11 @@
 <template>
     <KanbanBoard/>
-    <draggable tag="ul" ghost-class="moving-card" class="w-full max-w-md" :list="tasks" :animation="200">
-        <li v-for="task in tasks"
-            :key="task.id">
-            {{task.title}}
-        </li>
+    <draggable tag="ul" ghost-class="moving-card" class="w-full max-w-md" :list="tasks" :animation="200" item-key="id">
+        <template #item="{ element }">
+            <li class="p-3 mb-2 bg-white shadow rounded cursor-move">
+            {{ element.title }}
+            </li>
+      </template>
     </draggable>
   </template>
   
