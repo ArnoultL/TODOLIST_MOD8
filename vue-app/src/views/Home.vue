@@ -1,6 +1,6 @@
 <template>
     <div>
-      <HeroHeader/>
+      <KanbanVue/>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-4  border-gray-100 my-4" >
           <div class=" w-full max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
               <div class="px-5 pb-5 text-center">
@@ -33,11 +33,11 @@
   </template>
   
   <script>
-  import HeroHeader from '../components/HeroHeader.vue'
+  import KanbanVue from '../components/KanbanBoard.vue'
   
   export default {
     components: {
-      HeroHeader
+      KanbanVue
     }
   }
   </script>
