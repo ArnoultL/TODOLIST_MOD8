@@ -8,5 +8,9 @@
         <div>
             <button class="button button--disabled">Login</button>
         </div>
+        <div>
+        <p>Do not have an account yet ?</p>
+        <router-link to="/Register" class="text-blue-600 hover:underline">Register</router-link>
+        </div>
     </div>
 </template>

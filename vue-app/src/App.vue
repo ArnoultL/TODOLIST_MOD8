@@ -4,9 +4,10 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <div class="text-center p-6">
+    <h1>MyToDo App</h1>
     <nav class="flex justify-center gap-6 mb-6 text-lg">
       <router-link to="/" class="text-blue-600 hover:underline">Welcome</router-link>
-      <router-link to="/home" class="text-blue-600 hover:underline">Home</router-link>
+      <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
     </nav>
      <router-view />
   </div>
