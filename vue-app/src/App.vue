@@ -1,5 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import SideBar from './components/SideBar.vue'
 </script>
 
 <template>
@@ -16,6 +17,10 @@ import HelloWorld from './components/HelloWorld.vue'
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">All Rights Reserved ©2025 .
       </span>
   </footer>
+  <SideBar
+  v-if="showSideBar"
+  :toggle="toggleSideBar"
+  />
 </template>
 
 <style scoped>
@@ -32,3 +37,22 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+<script>
+export default {
+  components: {
+    SideBar
+  },
+  data () {
+    return {
+      showSideBar: true,
+      }
+  },
+  methods: {
+    toggleSideBar () {
+      this.showSideBar = !this.showSideBar
+    }
+  }
+
+}
+</script>
