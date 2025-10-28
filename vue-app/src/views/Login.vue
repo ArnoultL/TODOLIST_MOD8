@@ -10,7 +10,7 @@
         </div>
         </div>
         <div>
-            <button class="button button--disabled" @click="logedIn">Login</button>
+            <button @click="loged && $router.push({name : 'home'})":disabled="!loged">Login</button>
         </div>
         <div>
         <p>Do not have an account yet ?</p>
@@ -20,13 +20,9 @@
 </template>
 <script>
 export default {
-    components : {
-        Home,
-
-    },
     data (){
         return {
-            loged : false,
+            loged : true,
         }
     },
     methods : {
