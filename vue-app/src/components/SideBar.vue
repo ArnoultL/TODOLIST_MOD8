@@ -8,7 +8,6 @@
           <button class="close-button" @click="toggle">&times;</button>
         </div>
       </div>
-      <p>THIS IS A HEADER</p>
     </header>
     <section class="sidebar-content">
       <h3>------Mes Listes------</h3>
@@ -46,8 +45,8 @@ export default {
   right: 0;
   width: 250px;
   height: 100vh;
-  background-color: #000;
-  color: white;
+  background-color: #e9d2b3;
+  color: black;
   border-left: 1px solid #444;
   padding: 1rem;
   display: flex;
