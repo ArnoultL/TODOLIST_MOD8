@@ -6,6 +6,7 @@ import SideBar from './components/SideBar.vue'
 <template>
   <div class="text-center p-6">
     <h1>MyToDo App</h1>
+    <button class="showbar" @click="toggleSideBar">&times;</button>
     <nav class="flex justify-center gap-6 mb-6 text-lg">
       <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
@@ -35,6 +36,10 @@ import SideBar from './components/SideBar.vue'
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.showbar{
+  right: 0;
 }
 </style>
 
