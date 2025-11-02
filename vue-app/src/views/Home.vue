@@ -14,6 +14,15 @@
       class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
       <h3 class="font-bold text-center mb-2" >{{ column.name }}</h3>
+      <div class="column-progress mb-2">
+        <div class="w-full bg-gray-200 rounded h-2 overflow-hidden">
+          <div
+            class="bg-green-500 h-2"
+            :style="{ width: getProgress(column) + '%' }"
+          ></div>
+        </div>
+        <div class="text-sm text-center mt-1">{{ getProgress(column) }}%</div>
+      </div>
       <draggable
         v-model="column.tasks"
         group="tasks"
