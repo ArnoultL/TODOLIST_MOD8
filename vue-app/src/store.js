@@ -10,12 +10,12 @@ const store = reactive({
     { id: 4, name: 'DONE', tasks: [] },
   ],
   createTask(title) {
-    const t = { id: this._nextId++, name: title  ||'Nouvelle tâche', done: false }
+    const t = { id: this._nextId++, name: title  ||'New Task', done: false }
     this.sidebarTasks.push(t)
     return t
   },
   addTaskToColumn(columnId, title) {
-    const t = { id: this._nextId++, name: title || 'Nouvelle tâche', done: false }
+    const t = { id: this._nextId++, name: title || 'New Task', done: false }
     const c = this.columns.find(c => c.id === columnId)
     if (c) c.tasks.push(t)
     return t
@@ -30,7 +30,7 @@ const store = reactive({
   }
   ,
   addColumn(name) {
-    const col = { id: this._nextId++, name: name || 'Nouvelle colonne', tasks: [] }
+    const col = { id: this._nextId++, name: name || 'New column', tasks: [] }
     this.columns.push(col)
     return col
   },

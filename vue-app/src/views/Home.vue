@@ -1,9 +1,9 @@
 <template>
   <section class="home-create flex items-center mb-4">
     <form class="home-controls" @submit.prevent="create">
-      <label for="home-new-task" class="sr-only">Nouvelle tâche</label>
-      <input id="home-new-task" v-model="newTask" placeholder="Nouvelle tâche..." class="flex-1 px-3 py-2 rounded" />
-      <button type="submit" class="create-btn">➕ Ajouter</button>
+      <label for="home-new-task" class="sr-only">New Task</label>
+      <input id="home-new-task" v-model="newTask" placeholder="New Task..." class="flex-1 px-3 py-2 rounded" />
+      <button type="submit" class="create-btn">➕ Add</button>
     </form>
   </section>
 
@@ -64,7 +64,6 @@ export default {
     create () {
       const name = (this.newTask || '').trim()
       if (!name) return
-      // Recherche robuste de la colonne "A TRIER" (ou première colonne si pas trouvée)
       const triColumn = store.columns.find(c => c.name && c.name.toLowerCase().includes('trier')) || store.columns[0]
       store.addTaskToColumn(triColumn.id, name)
       this.newTask = ''
