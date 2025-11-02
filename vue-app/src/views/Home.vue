@@ -1,9 +1,9 @@
 <template>
   <section class="home-create flex items-center mb-4">
     <form class="home-controls" @submit.prevent="create">
-      <label for="home-new-task" class="sr-only">Nouvelle tâche</label>
-      <input id="home-new-task" v-model="newTask" placeholder="Nouvelle tâche..." class="flex-1 px-3 py-2 rounded" />
-      <button type="submit" class="create-btn">➕ Ajouter</button>
+      <label for="home-new-task" class="sr-only">New Task</label>
+      <input id="home-new-task" v-model="newTask" placeholder="New Task..." class="flex-1 px-3 py-2 rounded" />
+      <button type="submit" class="create-btn">➕ Add</button>
     </form>
   </section>
 
@@ -14,6 +14,15 @@
       class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
       <h3 class="font-bold text-center mb-2" >{{ column.name }}</h3>
+      <div class="column-progress mb-2">
+        <div class="w-full bg-gray-200 rounded h-2 overflow-hidden">
+          <div
+            class="bg-green-500 h-2"
+            :style="{ width: getProgress(column) + '%' }"
+          ></div>
+        </div>
+        <div class="text-sm text-center mt-1">{{ getProgress(column) }}%</div>
+      </div>
       <draggable
         v-model="column.tasks"
         group="tasks"
@@ -21,7 +30,12 @@
       >
         <template #item="{ element }">
           <div class="bg-white p-2 border border-gray-300 rounded cursor-grab subbox">
-            {{ element.name }}
+            <input
+              type="checkbox"
+              :checked="!!element.done"
+              @change="toggleTaskDone(element, $event.target.checked)"
+            />
+            <span :class="{ 'line-through text-gray-400': element.done }">{{ element.name }}</span>
           </div>
         </template>
       </draggable>
@@ -50,7 +64,6 @@ export default {
     create () {
       const name = (this.newTask || '').trim()
       if (!name) return
-      // Recherche robuste de la colonne "A TRIER" (ou première colonne si pas trouvée)
       const triColumn = store.columns.find(c => c.name && c.name.toLowerCase().includes('trier')) || store.columns[0]
       store.addTaskToColumn(triColumn.id, name)
       this.newTask = ''
@@ -77,6 +90,9 @@ export default {
     addColumn () {
       const name = prompt('Nom de la nouvelle colonne', 'Nouvelle colonne')
       if (name !== null) store.addColumn(name.trim() || 'Nouvelle colonne')
+    },
+    toggleTaskDone (task, checked) {
+      task.done = !!checked
     }
   }
 }
