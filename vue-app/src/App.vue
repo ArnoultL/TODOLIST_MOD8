@@ -27,6 +27,7 @@ import SideBar from './components/SideBar.vue'
   <SideBar
   v-if="showSideBar"
   :toggle="toggleSideBar"
+  :tasks="tasks"
   />
 </template>
 
@@ -50,13 +51,17 @@ import SideBar from './components/SideBar.vue'
 </style>
 
 <script>
+import SideBar from './components/SideBar.vue';
+import tache from './tache.json';
+
 export default {
   components: {
-    SideBar
+    SideBar,
   },
   data () {
     return {
-      showSideBar: true,
+      showSideBar: false,
+      tasks: tache,
       }
   },
   methods: {
@@ -64,6 +69,5 @@ export default {
       this.showSideBar = !this.showSideBar
     }
   }
-
 }
 </script>

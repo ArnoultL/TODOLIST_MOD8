@@ -4,7 +4,7 @@
       <div class="header-top">
         <h2 class="sidebar-title">Menu</h2>
         <div class="button-group">
-          <button class="nav-button" @click="goToPage">⇢</button>
+          <button class="nav-button" @click="toggle(); goToPage()">⇢</button>
           <button class="close-button" @click="toggle">&times;</button>
         </div>
       </div>
@@ -13,7 +13,7 @@
     <section class="sidebar-content">
       <h3>------Mes Listes------</h3>
       <ul class="sidebar-list">
-        <li v-for="(item, index) in items" :key="index">
+        <li v-for="(item, index) in tasks" :key="index">
           {{ item.name }}
           <li v-for="(list,indexbis) in item.tasks" :key="indexbis">
             {{ list.name }}
@@ -26,13 +26,9 @@
 
 <script>
 export default {
-  props: ['toggle','items'],
+  props: ['toggle','tasks'],
   data() {
     return {
-      items2: [
-        'Liste 1', 'Liste 2', 'Liste 3', 'Liste 4', 'Liste 5',
-        'Liste 6', 'Liste 7', 'Liste 8', 'Liste 9', 'Liste 10'
-      ]
     }
   },
   methods: {
