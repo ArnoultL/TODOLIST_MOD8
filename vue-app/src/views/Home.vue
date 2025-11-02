@@ -1,5 +1,5 @@
 <template>
-  <section class="home-create mb-4">
+  <section class="home-create flex items-centered mb-4">
       <form class="home-controls" @submit.prevent="create">
         <label for="home-new-task" class="sr-only">Nouvelle tâche</label>
         <input id="home-new-task" v-model="newTask" placeholder="Nouvelle tâche..." class="flex-1 px-3 py-2 rounded" />
@@ -29,6 +29,7 @@
 </template>
 <script>
 import draggable from 'vuedraggable';
+import store from '../store'
 
 export default {
   components: {
@@ -42,9 +43,10 @@ export default {
   data() {
     return {
       columns: [
-        { id: 1, name: 'TODO', tasks: [{ id: 1, name: 'Tâche 1' }, {id: 2, name:'Tacfsvvfvfd'}] },
-        { id: 2, name: 'DOING', tasks: [{id: 1, name:'dfsfdf'}] },
-        { id: 3, name: 'DONE', tasks: [] },
+        { id: 1, name: 'A TRIER', tasks: [{ id: 1, name: 'Tâche 1' }, {id: 2, name:'Tacfsvvfvfd'}] },
+        { id: 2, name: 'TO DO', tasks: [{id: 1, name:'dfsfdf'}] },
+        { id: 3, name: 'DOING', tasks: [] },
+        { id: 4, name: 'DOING', tasks: [] },
       ],
     };
     return {
@@ -53,9 +55,10 @@ export default {
     },
   methods : {
     create () {
-      const name = (this.newTask || '').trim();
+      const name = (this.newTask || '').trim()
       if (!name) return
-      store.createTask(name)
+      const triColumn = store.columns.find(c => c.name && c.name.toLowerCase().includes('trier')) || store.columns[0]
+      store.addTaskToColumn(triColumn.id, name)
       this.newTask = ''
     },
     getProgress (column) {
