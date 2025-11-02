@@ -11,16 +11,16 @@
     <div
       v-for="column in columns"
       :key="column.id"
-      class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6"
+      class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
-      <h3 class="font-bold text-center mb-2">{{ column.name }}</h3>
+      <h3 class="font-bold text-center mb-2" >{{ column.name }}</h3>
       <draggable
         v-model="column.tasks"
         group="tasks"
         class="flex flex-col gap-2 overflow-y-auto"
       >
         <template #item="{ element }">
-          <div class="bg-white p-2 border border-gray-300 rounded cursor-grab">
+          <div class="bg-white p-2 border border-gray-300 rounded cursor-grab subbox">
             {{ element.name }}
           </div>
         </template>
@@ -81,3 +81,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.box{
+  background-color: #083048;
+  color : white;
+}
+
+.subbox{
+  background-color: #0c4a6e;
+  border: none;
+}
+</style>
