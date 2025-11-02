@@ -8,15 +8,16 @@
           <button class="close-button" @click="toggle">&times;</button>
         </div>
       </div>
-
       <p>THIS IS A HEADER</p>
     </header>
-
     <section class="sidebar-content">
-      <h3>Ma Liste</h3>
+      <h3>------Mes Listes------</h3>
       <ul class="sidebar-list">
         <li v-for="(item, index) in items" :key="index">
-          {{ item }}
+          {{ item.name }}
+          <li v-for="(list,indexbis) in item.tasks" :key="indexbis">
+            {{ list.name }}
+          </li>
         </li>
       </ul>
     </section>
@@ -25,10 +26,10 @@
 
 <script>
 export default {
-  props: ['toggle'],
+  props: ['toggle','items'],
   data() {
     return {
-      items: [
+      items2: [
         'Liste 1', 'Liste 2', 'Liste 3', 'Liste 4', 'Liste 5',
         'Liste 6', 'Liste 7', 'Liste 8', 'Liste 9', 'Liste 10'
       ]

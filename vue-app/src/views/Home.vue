@@ -19,19 +19,23 @@
       </draggable>
     </div>
   </div>
+  <Sidebar 
+    :items="columns" />
 </template>
 <script>
 import draggable from 'vuedraggable';
+import Sidebar from '../components/SideBar.vue';
 
 export default {
   components: {
     draggable,
+    Sidebar
   },
   data() {
     return {
       columns: [
-        { id: 1, name: 'TODO', tasks: [{ id: 1, name: 'Tâche 1' }] },
-        { id: 2, name: 'DOING', tasks: [] },
+        { id: 1, name: 'TODO', tasks: [{ id: 1, name: 'Tâche 1' }, {id: 2, name:'Tacfsvvfvfd'}] },
+        { id: 2, name: 'DOING', tasks: [{id: 1, name:'dfsfdf'}] },
         { id: 3, name: 'DONE', tasks: [] },
       ],
     };
