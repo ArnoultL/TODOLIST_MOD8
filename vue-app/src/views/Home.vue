@@ -81,3 +81,15 @@ export default {
   }
 }
 </script>
+<style scoped>
+.kanban { display:flex; gap:1rem; overflow-x:auto; padding:0.5rem 0; }
+.kanban-column { min-width:260px; flex:0 0 260px; background:var(--card); border-radius:0.5rem; padding:0.75rem; }
+.kanban-title { text-align:center; font-weight:700; margin-bottom:0.5rem; }
+.kanban-list { display:flex; flex-direction:column; gap:0.5rem; max-height:60vh; overflow:auto; }
+.kanban-card { background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0.6rem; border-radius:0.4rem; cursor:grab; }
+@media (max-width:640px) { .kanban-column { min-width:220px; } }
+
+.kanban-card-inner { display:flex; align-items:center; gap:0.6rem; }
+.task-checkbox { width:18px; height:18px; accent-color: var(--accent); }
+.kanban-card span.done { text-decoration: line-through; opacity:0.6; }
+</style>
