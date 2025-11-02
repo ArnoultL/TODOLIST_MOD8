@@ -11,16 +11,16 @@
     <div
       v-for="column in columns"
       :key="column.id"
-      class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6"
+      class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
-      <h3 class="font-bold text-center mb-2">{{ column.name }}</h3>
+      <h3 class="font-bold text-center mb-2" >{{ column.name }}</h3>
       <draggable
         v-model="column.tasks"
         group="tasks"
         class="flex flex-col gap-2 overflow-y-auto"
       >
         <template #item="{ element }">
-          <div class="bg-white p-2 border border-gray-300 rounded cursor-grab">
+          <div class="bg-white p-2 border border-gray-300 rounded cursor-grab subbox">
             {{ element.name }}
           </div>
         </template>
@@ -81,15 +81,15 @@ export default {
   }
 }
 </script>
-<style scoped>
-.kanban { display:flex; gap:1rem; overflow-x:auto; padding:0.5rem 0; }
-.kanban-column { min-width:260px; flex:0 0 260px; background:var(--card); border-radius:0.5rem; padding:0.75rem; }
-.kanban-title { text-align:center; font-weight:700; margin-bottom:0.5rem; }
-.kanban-list { display:flex; flex-direction:column; gap:0.5rem; max-height:60vh; overflow:auto; }
-.kanban-card { background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:0.6rem; border-radius:0.4rem; cursor:grab; }
-@media (max-width:640px) { .kanban-column { min-width:220px; } }
 
-.kanban-card-inner { display:flex; align-items:center; gap:0.6rem; }
-.task-checkbox { width:18px; height:18px; accent-color: var(--accent); }
-.kanban-card span.done { text-decoration: line-through; opacity:0.6; }
+<style scoped>
+.box{
+  background-color: #083048;
+  color : white;
+}
+
+.subbox{
+  background-color: #0c4a6e;
+  border: none;
+}
 </style>
