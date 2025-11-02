@@ -4,15 +4,21 @@ import SideBar from './components/SideBar.vue'
 </script>
 
 <template>
-  <div class="text-center p-6">
-    <h1>MyToDo App</h1>
-    <nav class="flex justify-center gap-6 mb-6 text-lg">
+  <header class="flex items-center justify-between mb-6">
+    <div class="flex items-center gap-4">
+      <h1>MyToDo App</h1>
+    </div>
+    <nav class = "hidden sm:flex gap-4">
       <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
       <router-link to="/apropos" class="text-blue-600 hover:underline">A Propos</router-link>
     </nav>
-     <router-view />
-  </div>
+  </header>
+  <main>
+    <router-view />
+  </main>
+
+    
   <footer class="w-full mx-auto  border-t border-gray-100 mt-1 max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">All Rights Reserved ©2025 .
       </span>
