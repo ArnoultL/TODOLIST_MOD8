@@ -31,6 +31,7 @@
 
 <script>
 import draggable from 'vuedraggable'
+import tache from '../tache.json';
 import store from '../store'
 
 export default {

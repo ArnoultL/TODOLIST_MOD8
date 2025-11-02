@@ -1,0 +1,33 @@
+[
+    { 
+        "id": 1, 
+        "name": "TODO", 
+        "tasks": [
+            {
+                "id": 1, 
+                "name": "Tâche 1"
+            }, 
+            {
+                "id": 2, 
+                "name":"Tâche 2"
+            }
+        ]
+    },
+    { 
+        "id": 2, 
+        "name": "DOING", 
+        "tasks": [
+            {
+                "id": 1, 
+                "name":"Tâhce 4"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "DONE",
+        "tasks": [
+
+        ]
+    }
+]
