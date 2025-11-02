@@ -1,64 +1,126 @@
-<template> 
-  <aside class="sidebar"> 
+<template>
+  <aside class="sidebar">
     <header class="sidebarbloc">
-      <h2 class="sidebar-title">Menu</h2>
-      <p>THIS IS A HEADER></p>
+      <div class="header-top">
+        <h2 class="sidebar-title">Menu</h2>
+        <div class="button-group">
+          <button class="nav-button" @click="goToPage">⇢</button>
+          <button class="close-button" @click="toggle">&times;</button>
+        </div>
+      </div>
+
+      <p>THIS IS A HEADER</p>
     </header>
-    <body>
-        <h2>THIS IS BODY</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Product Image</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Total</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>frhjfhbdsjhf</td>
-                    <td>Gift Bag</td>
-                    <td>$99.00</td>
-                    <td>dfdsfndfbfd</td>
-                    <td>$99.00</td>
-                </tr>
-            </tbody>
-        </table>
-    </body>
-  </aside> 
+
+    <section class="sidebar-content">
+      <h3>Ma Liste</h3>
+      <ul class="sidebar-list">
+        <li v-for="(item, index) in items" :key="index">
+          {{ item }}
+        </li>
+      </ul>
+    </section>
+  </aside>
 </template>
 
 <script>
 export default {
-    props:['toggle']
+  props: ['toggle'],
+  data() {
+    return {
+      items: [
+        'Liste 1', 'Liste 2', 'Liste 3', 'Liste 4', 'Liste 5',
+        'Liste 6', 'Liste 7', 'Liste 8', 'Liste 9', 'Liste 10'
+      ]
+    }
+  },
+  methods: {
+    goToPage() {
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
-
 
 <style scoped>
 .sidebar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 200px;
+  right: 0;
+  width: 250px;
   height: 100vh;
-  background-color:rgb(218, 255, 220);
-  border-right: 1px solid #ddd;
+  background-color: #000;
+  color: white;
+  border-left: 1px solid #444;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebarbloc {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-button,
+.close-button {
+  background: #222;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-button:hover {
+  background: #1e90ff; /* bleu clair */
+}
+
+.close-button:hover {
+  background: #ff4444; /* rouge clair */
 }
 
 .sidebar-title {
   font-weight: bold;
   font-size: 1.2rem;
-  color: #333;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar-list li:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 </style>
