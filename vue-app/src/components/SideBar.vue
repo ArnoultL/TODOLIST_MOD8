@@ -10,7 +10,7 @@
       </div>
     </header>
     <section class="sidebar-content">
-      <h3>------Mes Listes------</h3>
+      <h2>------My Task------</h2>
       <ul class="sidebar-list">
         <li v-for="(item, index) in tasks" :key="index">
           {{ item.name }}

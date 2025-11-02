@@ -1,14 +1,14 @@
 <template>
-    <div >
+    <div>
         <h1>Login</h1>
-        <div class="card">
-        <div>
-            <input type="text" placeholder="Username"/>
-        </div>
-        <div>
-            <input type="password" placeholder="Password"/>
-        </div>
-        </div>
+        <form class="card">
+            <div>
+                <input type="text" placeholder="Username"/>
+            </div>
+            <div>
+                <input type="password" placeholder="Password"/>
+            </div>
+        </form>
         <div>
             <button @click="loged && $router.push({name : 'home'})":disabled="!loged">Login</button>
         </div>
