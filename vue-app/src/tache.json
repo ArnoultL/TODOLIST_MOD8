@@ -5,11 +5,13 @@
         "tasks": [
             {
                 "id": 1, 
-                "name": "Tâche 1"
+                "name": "Tâche 1",
+                "done": false
             }, 
             {
                 "id": 2, 
-                "name":"Tâche 2"
+                "name":"Tâche 2",
+                "done": false
             }
         ]
     },
@@ -19,7 +21,8 @@
         "tasks": [
             {
                 "id": 1, 
-                "name":"Tâhce 4"
+                "name":"Tâhce 4",
+                "done": false
             }
         ]
     },

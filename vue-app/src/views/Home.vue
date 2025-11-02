@@ -21,7 +21,12 @@
       >
         <template #item="{ element }">
           <div class="bg-white p-2 border border-gray-300 rounded cursor-grab subbox">
-            {{ element.name }}
+            <input
+              type="checkbox"
+              :checked="!!element.done"
+              @change="toggleTaskDone(element, $event.target.checked)"
+            />
+            <span :class="{ 'line-through text-gray-400': element.done }">{{ element.name }}</span>
           </div>
         </template>
       </draggable>
@@ -77,6 +82,9 @@ export default {
     addColumn () {
       const name = prompt('Nom de la nouvelle colonne', 'Nouvelle colonne')
       if (name !== null) store.addColumn(name.trim() || 'Nouvelle colonne')
+    },
+    toggleTaskDone (task, checked) {
+      task.done = !!checked
     }
   }
 }
