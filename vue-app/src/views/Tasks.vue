@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen flex items-center justify-center p-8">
-    <div class="bg-white shadow-2xl rounded-2xl w-full max-w-3xl p-8">
+    <div class="bg-[#083048] xshadow-2xl rounded-2xl w-full max-w-3xl p-8">
       <div class="flex items-center justify-between border-b pb-4 mb-6">
-        <h1 class="text-4xl font-bold text-blue-600">
+        <h1 class="text-4xl font-bold text-[#F1ECDC]">
           {{ getTaskNameById(id) }}
         </h1>
         <bouton class="nav-buttonbis" @click="goToPage()">&times;</bouton>
@@ -11,11 +11,11 @@
         <li
           v-for="(item, index) in getTaskById(id).tasks"
           :key="index"
-          class="bg-gray-50 hover:bg-gray-100 p-5 rounded-xl shadow-sm transition-all"
+          class="bg-[#0A3F5E] hover:bg-[#0c4a6e] p-5 rounded-xl shadow-sm transition-all"
         >
           <div class="flex justify-between items-center mb-2">
             <input type="checkbox" class="big-checkbox"></input>
-            <h3 class="text-xl font-semibold text-gray-800">{{ item.name }}</h3>
+            <h3 class="text-xl font-semibold text-gray-200">{{ item.name }}</h3>
             <span
                   :class="{
                     'bg-red-100 text-red-600': item.importance === 'Important',
@@ -33,7 +33,7 @@
             </span>
           </div>
 
-          <p v-if="item.desc" class="text-gray-600 mb-3 pl-2 italic">
+          <p v-if="item.desc" class="text-gray-100 mb-3 pl-2 italic">
             {{ item.desc }}
           </p>
 
@@ -45,7 +45,7 @@
             >
               <div>
                 <input type="checkbox" class="font-medium text-gray-800"> {{ sub.name }}</input>
-                <p v-if="sub.desc" class="text-sm text-gray-600 italic">{{ sub.desc }}</p>
+                <p v-if="sub.desc" class="text-sm text-gray-100 italic">{{ sub.desc }}</p>
               </div>
               <span
                 :class="sub.done ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'"
