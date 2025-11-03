@@ -32,6 +32,9 @@ import SideBar from './components/SideBar.vue'
 </template>
 
 <style scoped>
+h1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .logo {
   height: 6em;
   padding: 1.5em;
