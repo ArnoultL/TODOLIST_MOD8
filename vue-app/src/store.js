@@ -4,7 +4,7 @@ const store = reactive({
   _nextId: 1,
   sidebarTasks: [],
   columns: [
-    { id: 1, name: 'A TRIER', tasks: [] },
+    { id: 1, name: 'TO SORT', tasks: [] },
     { id: 2, name: 'TODO', tasks: [] },
     { id: 3, name: 'DOING', tasks: [] },
     { id: 4, name: 'DONE', tasks: [] },
