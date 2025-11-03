@@ -61,7 +61,7 @@
                 'text-blue-500': element.priority === 'low'
               }"
             >
-              {{ element.priority === 'high' ? '⚠️ Important' : 
+              {{ element.priority === 'high' ? ' Important' : 
                  element.priority === 'medium' ? ' Medium' : 
                  element.priority === 'low' ? ' Low' : '' }}
             </span>
