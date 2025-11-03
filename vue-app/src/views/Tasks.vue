@@ -69,10 +69,10 @@ export default {
     },
     getTaskNameById(id) {
       const task = this.getTaskById(id);
-      return task ? task.name : 'Non trouvé';
+      return task ? task.name : 'Not Found';
     },
     knowifdone(task) {
-      return task.done ? 'Fini' : 'Pas fini';
+      return task.done ? 'Done' : 'Not Done';
     },
   },
 };

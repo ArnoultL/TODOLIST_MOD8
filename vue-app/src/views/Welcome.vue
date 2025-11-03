@@ -7,7 +7,7 @@
     <p>Join the team !</p></div>
 
      <router-link to="/login" class="text-black-600 hover:text-gray-500">Login</router-link>
-
+    <br>
     <div>
     <p>About us :<br> We are 4 students that want to improve the way we live. Hope this app will help you !</p>
     <p>Gregoire, Julie, Laetitia and Nathan</p>
