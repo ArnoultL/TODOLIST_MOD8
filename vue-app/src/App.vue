@@ -6,7 +6,7 @@ import SideBar from './components/SideBar.vue'
 <template>
   <header class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-4">
-      <h1>MyToDo App</h1>
+      <h1><router-link to="/Home" class="hover:underline">My ToDo App</router-link></h1>
     </div>
     <span>
     <nav class = "hidden sm:flex gap-4">

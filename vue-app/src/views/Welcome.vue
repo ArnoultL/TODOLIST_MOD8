@@ -9,12 +9,11 @@
     </div>
 
     <div>
-      <p class="text-xl font-semibold text-gray-800">Join the team!</p>
       <router-link
-        to="/login"
+        to="/register"
         class="mt-4 inline-block bg-[#0c4a6e] text-white px-6 py-2 rounded"
       >
-        Login
+        Join us now !
       </router-link>
     </div>
 

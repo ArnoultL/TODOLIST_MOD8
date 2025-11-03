@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style scoped>
+*{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .sidebar {
   position: fixed;
   top: 0;
