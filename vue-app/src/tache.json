@@ -1,17 +1,25 @@
 [
     { 
         "id": 1, 
-        "name": "TODO", 
+        "name": "Shopping", 
         "tasks": [
             {
                 "id": 1, 
-                "name": "Tâche 1",
-                "done": false
+                "name": "Eggs",
+                "done": false,
+                "desc": "3 eggs for for a cake"
             }, 
             {
                 "id": 2, 
-                "name":"Tâche 2",
-                "done": false
+                "name":"Flour",
+                "done": false,
+                "desc": "i don't kown"
+            },
+            {
+                "id":3,
+                "name":"T-shirt",
+                "done":true,
+                "desc":"i don't kown too"
             }
         ]
     },
@@ -21,8 +29,22 @@
         "tasks": [
             {
                 "id": 1, 
-                "name":"Tâhce 4",
-                "done": false
+                "name":"Tâche 4",
+                "done": false,
+                "desc":"i don't kown too",
+                "subtasks": [
+                    {
+                        "id": 1,
+                        "name": "Tasks in tasks",
+                        "done": false
+                    },
+                    {
+                        "id": 2,
+                        "name": "Tasks in tasks 2",
+                        "done": false,
+                        "desc": "fdjkfdsjkfs"
+                    }
+                ]
             }
         ]
     },
