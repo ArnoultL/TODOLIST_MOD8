@@ -6,14 +6,16 @@ import SideBar from './components/SideBar.vue'
 <template>
   <header class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-4">
-      <button class="showbar" @click="toggleSideBar">☰</button>
       <h1>MyToDo App</h1>
     </div>
+    <span>
     <nav class = "hidden sm:flex gap-4">
       <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
       <router-link to="/apropos" class="text-blue-600 hover:underline">About us</router-link>
+      <button class="showbar" @click="toggleSideBar">☰</button>
     </nav>
+  </span>
   </header>
   <main>
     <router-view />
@@ -50,7 +52,7 @@ h1{
 }
 
 .showbar{
-  right: 0;
+  padding-top: 0;
 }
 </style>
 
