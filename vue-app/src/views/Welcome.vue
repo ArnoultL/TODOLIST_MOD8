@@ -13,3 +13,7 @@
     <p>Gregoire, Julie, Laetitia and Nathan</p>
     </div>
 </template>
+
+<style lang="css" scoped>
+
+</style>
