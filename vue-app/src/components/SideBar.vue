@@ -69,17 +69,7 @@ export default {
   gap: 0.5rem;
 }
 
-.nav-button,
-.close-button {
-  background: #222;
-  border: none;
-  color: white;
-  padding: 0.4rem 0.6rem;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 4px;
-  transition: background 0.2s;
-}
+
 
 .nav-button:hover {
   background: #1e90ff; /* bleu clair */

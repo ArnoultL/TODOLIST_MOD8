@@ -5,6 +5,7 @@
         <h1 class="text-4xl font-bold text-blue-600">
           {{ getTaskNameById(id) }}
         </h1>
+        <bouton class="nav-buttonbis" @click="goToPage()">&times;</bouton>
       </div>
       <ul class="space-y-4">
         <li
@@ -64,16 +65,19 @@ export default {
   },
 
   methods: {
-    getTaskById(id) {
+    getTaskById(id){
       return this.tasks.find(task => task.id === Number(id));
     },
-    getTaskNameById(id) {
+    getTaskNameById(id){
       const task = this.getTaskById(id);
       return task ? task.name : 'Non trouvé';
     },
-    knowifdone(task) {
+    knowifdone(task){
       return task.done ? 'Fini' : 'Pas fini';
     },
+    goToPage(){
+      this.$router.push('/home')
+    }
   },
 };
 </script>
