@@ -12,7 +12,7 @@ import SideBar from './components/SideBar.vue'
     <nav class = "hidden sm:flex gap-4">
       <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
-      <router-link to="/apropos" class="text-blue-600 hover:underline">A Propos</router-link>
+      <router-link to="/apropos" class="text-blue-600 hover:underline">About us</router-link>
     </nav>
   </header>
   <main>
@@ -33,6 +33,9 @@ import SideBar from './components/SideBar.vue'
 </template>
 
 <style scoped>
+h1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -4,18 +4,18 @@ const store = reactive({
   _nextId: 1,
   sidebarTasks: [],
   columns: [
-    { id: 1, name: 'A TRIER', tasks: [] },
+    { id: 1, name: 'TO SORT', tasks: [] },
     { id: 2, name: 'TODO', tasks: [] },
     { id: 3, name: 'DOING', tasks: [] },
     { id: 4, name: 'DONE', tasks: [] },
   ],
-  createTask(title) {
-    const t = { id: this._nextId++, name: title  ||'New Task', done: false }
+  createTask(title, priority = 'medium') {
+    const t = { id: this._nextId++, name: title  ||'New Task', done: false, priority }
     this.sidebarTasks.push(t)
     return t
   },
-  addTaskToColumn(columnId, title) {
-    const t = { id: this._nextId++, name: title || 'New Task', done: false }
+  addTaskToColumn(columnId, title, priority = 'medium') {
+    const t = { id: this._nextId++, name: title || 'New Task', done: false, priority }
     const c = this.columns.find(c => c.id === columnId)
     if (c) c.tasks.push(t)
     return t
