@@ -73,6 +73,29 @@ button:focus-visible {
   text-align: center;
 }
 
+.nav-button,
+.close-button {
+  background: #222;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.nav-buttonbis{
+  background: #ff00008e;
+  border: none;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
