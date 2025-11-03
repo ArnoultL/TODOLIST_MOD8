@@ -1,24 +1,27 @@
 [
     { 
         "id": 1, 
-        "name": "To Sort", 
+        "name": "To Sort",
         "tasks": [
             {
                 "id": 1, 
                 "name": "Eggs",
                 "done": false,
+                "importance":"Low", 
                 "desc": "3 eggs for for a cake"
             }, 
             {
                 "id": 2, 
                 "name":"Flour",
-                "done": false,
+                "done": false, 
+                "importance":"Low", 
                 "desc": "i don't kown"
             },
             {
                 "id":3,
                 "name":"T-shirt",
                 "done":true,
+                "importance":"Low", 
                 "desc":"i don't kown too"
             }
         ]
@@ -31,6 +34,7 @@
                 "id": 1, 
                 "name":"Tâche 4",
                 "done": false,
+                "importance":"Low",
                 "desc":"i don't kown too",
                 "subtasks": [
                     {

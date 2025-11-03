@@ -17,6 +17,15 @@
             <input type="checkbox" class="big-checkbox"></input>
             <h3 class="text-xl font-semibold text-gray-800">{{ item.name }}</h3>
             <span
+                  :class="{
+                    'bg-red-100 text-red-600': item.importance === 'Important',
+                    'bg-yellow-100 text-yellow-700': item.importance === 'Medium',
+                    'bg-green-100 text-green-700': item.importance === 'Low'
+                  }"
+                  class="px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-3"
+                >
+                  {{ item.importance }}
+                </span>            <span
               :class="item.done ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'"
               class="px-3 py-1 rounded-full text-sm font-semibold"
             >
@@ -42,7 +51,7 @@
                 :class="sub.done ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'"
                 class="px-2 py-1 rounded-full text-xs font-semibold"
               >
-                {{ knowifdone(sub) }}
+              {{ knowifdone(sub) }}
               </span>
             </li>
           </ul>
@@ -72,14 +81,15 @@ export default {
       const task = this.getTaskById(id);
       return task ? task.name : 'Not Found';
     },
-    knowifdone(task) {
+    knowifdone(task){
       return task.done ? 'Done' : 'Not Done';
     },
     goToPage(){
       this.$router.push('/home')
     }
   }
-};
+}
+
 </script>
 
 <style scoped>
@@ -90,6 +100,11 @@ li:hover {
 .big-checkbox {
   transform: scale(1.8);
   padding: 6px;
+}
+
+.right{
+right: 0;
+margin-right: 0;
 }
 
 </style>

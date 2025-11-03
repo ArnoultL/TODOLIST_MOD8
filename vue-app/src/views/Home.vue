@@ -22,7 +22,7 @@
       :key="column.id"
       class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
-      <bouton @click="goToTask(column.id)"class="font-bold text-center mb-2" >{{ column.name }}</bouton>
+      <bouton @click="goToTask(column.id)"class="font-bold text-center mb-2">{{ column.name }}</bouton>
       <div class="column-progress mb-2">
         <div class="w-full bg-gray-200 rounded h-2 overflow-hidden">
           <div
@@ -162,6 +162,9 @@ export default {
   border: none;
 }
 
+bouton:hover{
+  transform: translateY(-2px);
+}
 
 #date {
   color: #0f527b;
