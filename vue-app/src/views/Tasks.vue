@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen flex items-center justify-center p-8">
-    <div class="bg-white shadow-2xl rounded-2xl w-full max-w-3xl p-8">
+    <div class="bg-[#083048] xshadow-2xl rounded-2xl w-full max-w-3xl p-8">
       <div class="flex items-center justify-between border-b pb-4 mb-6">
-        <h1 class="text-4xl font-bold text-blue-600">
+        <h1 class="text-4xl font-bold text-[#F1ECDC]">
           {{ getTaskNameById(id) }}
         </h1>
       </div>
