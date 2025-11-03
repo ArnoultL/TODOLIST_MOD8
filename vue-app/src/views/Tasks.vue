@@ -11,11 +11,11 @@
         <li
           v-for="(item, index) in getTaskById(id).tasks"
           :key="index"
-          class="bg-gray-50 hover:bg-gray-100 p-5 rounded-xl shadow-sm transition-all"
+          class="bg-[#0A3F5E] hover:bg-[#0c4a6e] p-5 rounded-xl shadow-sm transition-all"
         >
           <div class="flex justify-between items-center mb-2">
             <input type="checkbox" class="big-checkbox"></input>
-            <h3 class="text-xl font-semibold text-gray-800">{{ item.name }}</h3>
+            <h3 class="text-xl font-semibold text-gray-200">{{ item.name }}</h3>
             <span
               :class="item.done ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'"
               class="px-3 py-1 rounded-full text-sm font-semibold"
@@ -24,7 +24,7 @@
             </span>
           </div>
 
-          <p v-if="item.desc" class="text-gray-600 mb-3 pl-2 italic">
+          <p v-if="item.desc" class="text-gray-100 mb-3 pl-2 italic">
             {{ item.desc }}
           </p>
 
@@ -36,7 +36,7 @@
             >
               <div>
                 <input type="checkbox" class="font-medium text-gray-800"> {{ sub.name }}</input>
-                <p v-if="sub.desc" class="text-sm text-gray-600 italic">{{ sub.desc }}</p>
+                <p v-if="sub.desc" class="text-sm text-gray-100 italic">{{ sub.desc }}</p>
               </div>
               <span
                 :class="sub.done ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'"
