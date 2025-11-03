@@ -5,13 +5,15 @@ import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Home from '../views/Home.vue'
 import Wel from '../views/Welcome.vue'
+import Tasks from '../views/Tasks.vue'
 
 const routes = [
   { path: '/', name: 'Welcome', component: Welcome },
   { path: '/login', name: 'Login', component: Login },
   {path : '/register', name:'register', component: Register},
   {path : '/home', name : 'home', component : Home},
-  {path : '/apropos', name : 'welcome', component : Wel}
+  {path : '/apropos', name : 'welcome', component : Wel},
+  {path : '/tasks/:id', name : 'tasks', component : Tasks, props : true}
 ]
 
 const router = createRouter({

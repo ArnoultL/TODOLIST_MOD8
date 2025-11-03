@@ -10,13 +10,10 @@
       </div>
     </header>
     <section class="sidebar-content">
-      <h2>------My Task------</h2>
+      <h2>------My Tasks------</h2>
       <ul class="sidebar-list">
         <li v-for="(item, index) in tasks" :key="index">
-          {{ item.name }}
-          <li v-for="(list,indexbis) in item.tasks" :key="indexbis">
-            {{ list.name }}
-          </li>
+          <bouton @click="goToTasks(item.id)">{{ item.name }}, {{ item.id }}</bouton>
         </li>
       </ul>
     </section>
@@ -25,7 +22,7 @@
 
 <script>
 export default {
-  props: ['toggle','tasks'],
+  props: ['toggle','tasks','goToTasks'],
   data() {
     return {
     }

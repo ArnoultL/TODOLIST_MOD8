@@ -28,6 +28,7 @@ import SideBar from './components/SideBar.vue'
   v-if="showSideBar"
   :toggle="toggleSideBar"
   :tasks="tasks"
+  :goToTasks="goToTask"
   />
 </template>
 
@@ -68,8 +69,11 @@ export default {
       }
   },
   methods: {
-    toggleSideBar () {
+    toggleSideBar (){
       this.showSideBar = !this.showSideBar
+    },
+    goToTask(p){
+      this.$router.push({name: 'tasks', params: {id: p}})
     }
   }
 }
