@@ -4,7 +4,7 @@
       <h1><router-link to="/Home" class="hover:underline">My ToDo App</router-link></h1>
     </div>
     <span>
-    <nav class = "hidden sm:flex gap-4">
+    <nav class = "hidden sm:flex gap-4 items-center">
       <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
       <router-link to="/apropos" class="text-blue-600 hover:underline">About us</router-link>
@@ -47,7 +47,7 @@ h1{
 }
 
 .showbar{
-  padding-top: 0;
+  color: white;
 }
 </style>
 

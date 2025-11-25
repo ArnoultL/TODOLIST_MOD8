@@ -2,13 +2,15 @@
   <section class="home-create flex items-center mb-4">
     <form class="home-controls" @submit.prevent="create">
       <label for="home-new-task" class="sr-only">New Task</label>
+
       <input id="home-new-task" v-model="newTask" placeholder="New Task..." class="flex-1 px-3 py-2 rounded" />
+      
       <select v-model="taskPriority" class="px-3 py-2 rounded ml-2">
         <option value="high">Important</option>
         <option value="medium">Medium</option>
         <option value="low">Low</option>
       </select>
-      <button type="submit" class="create-btn">➕ Add</button>
+      <button type="submit" class="create-btn text-white">➕ Add</button>
     </form>
   </section>
 
