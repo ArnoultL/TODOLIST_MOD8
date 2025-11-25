@@ -1,14 +1,10 @@
 import { reactive } from 'vue'
+import tache from './tache.json';
 
 const store = reactive({
   _nextId: 1,
   sidebarTasks: [],
-  columns: [
-    { id: 1, name: 'TO SORT', tasks: [] },
-    { id: 2, name: 'TODO', tasks: [] },
-    { id: 3, name: 'DOING', tasks: [] },
-    { id: 4, name: 'DONE', tasks: [] },
-  ],
+  columns: tache,
   createTask(title, priority = 'medium') {
     const t = { id: this._nextId++, name: title  ||'New Task', done: false, priority }
     this.sidebarTasks.push(t)

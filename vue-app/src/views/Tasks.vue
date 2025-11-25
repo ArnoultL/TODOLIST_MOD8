@@ -9,12 +9,12 @@
       </div>
       <ul class="space-y-4">
         <li
-          v-for="(item, index) in getTaskById(id).tasks"
+          v-for="(item, index) in getTasksById(id).tasks"
           :key="index"
           class="bg-[#0A3F5E] hover:bg-[#0c4a6e] p-5 rounded-xl shadow-sm transition-all"
         >
           <div class="flex justify-between items-center mb-2">
-            <input type="checkbox" class="big-checkbox"></input>
+            <input type="checkbox" class="big-checkbox" v-model="item.done"></input>
             <h3 class="text-xl font-semibold text-gray-200">{{ item.name }}</h3>
             <span
                   :class="{
@@ -62,23 +62,24 @@
 </template>
 
 <script>
-import items from '../tache.json';
+import store from '../store';
+
 
 export default {
   props: ['id'],
 
   data() {
     return {
-      tasks: items,
+      columns: store.columns,
     };
   },
 
   methods: {
-    getTaskById(id){
-      return this.tasks.find(task => task.id === Number(id));
+    getTasksById(id){
+      return this.columns.find(task => task.id === Number(id));
     },
     getTaskNameById(id){
-      const task = this.getTaskById(id);
+      const task = this.getTasksById(id);
       return task ? task.name : 'Not Found';
     },
     knowifdone(task){
