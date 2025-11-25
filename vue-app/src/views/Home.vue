@@ -20,7 +20,7 @@
     <div
       v-for="column in columns"
       :key="column.id"
-      class="flex flex-col bg-gray-100 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
+      class="flex flex-col bg-gradient-to-r from-blue-800 to-indigo-900 rounded-md p-2 flex-1 sm:flex-none sm:w-1/3 lg:w-1/6 box"
     >
       <bouton @click="goToTask(column.id)"class="font-bold text-center mb-2">{{ column.name }}</bouton>
       <div class="column-progress mb-2">
