@@ -10,6 +10,7 @@
       </div>
     </header>
     <section class="sidebar-content">
+      <router-link to="/addtasks" class="text-blue-600 hover:underline">Add Tasks</router-link>
       <h2>------My Tasks------</h2>
       <ul class="sidebar-list">
         <li v-for="(item, index) in tasks" :key="index">

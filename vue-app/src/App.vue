@@ -1,8 +1,3 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import SideBar from './components/SideBar.vue'
-</script>
-
 <template>
   <header class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-4">
