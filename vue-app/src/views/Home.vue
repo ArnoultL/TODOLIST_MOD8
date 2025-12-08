@@ -127,16 +127,17 @@ export default {
       const done = column.tasks.filter(t => t.done).length
       return Math.round((done / total) * 100)
     },
-    toggleTaskDone (task, checked) {
-      task.done = !!checked
-      store.updateTask(task.id, { done: task.done })
-    },
-    async onDragEnd (column) {
-      // Mettre à jour le store après drag & drop
-      column.tasks.forEach(task => {
-        store.updateTask(task.id, { columnId: column.id })
-      })
-    },
+  async onDragEnd(evt, column) {
+    const movedTask = evt.item.__vue__.task;
+    if (movedTask.status !== column.id) {
+      movedTask.status = column.id;
+      await axios.put(`/tasks/${movedTask.id}`, movedTask);
+    }
+  },
+  async toggleTaskDone(task, checked) {
+    task.done = !!checked;
+    await axios.put(`/tasks/${task.id}`, task);
+  },
     goToTask(id){
       this.$router.push({ name: 'tasks', params: { id } })
     }
