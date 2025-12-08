@@ -1,4 +1,4 @@
-<template>
+à<template>
   <div class="flex justify-center items-center h-screen">
     <div class="p-6 rounded shadow w-96 bg-white">
       <h2 class="text-xl font-bold mb-4">Sign In</h2>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import axios from '../api.js';
+import axiosInstance from '../api.js';
 
 export default {
   data() {
@@ -26,7 +26,7 @@ export default {
   methods: {
     async login() {
       try {
-        const res = await axios.post('/auth/login', { username: this.username, password: this.password });
+        const res = await axiosInstance.post('/auth/login', { username: this.username, password: this.password });
         localStorage.setItem('token', res.data.token);
         this.$router.push('/tasks');
       } catch {

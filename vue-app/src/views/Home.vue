@@ -80,6 +80,7 @@
             >
               {{ element.priority }}
             </span>
+            <span @click = "deleteTask(element)" class="cursor-pointer text-sm opacity-70 hover:opacity-100">🗑️</span>
           </div>
         </template>
       </draggable>
@@ -109,22 +110,51 @@ export default {
       taskPriority: 'medium'
     }
   },
-  mounted() {
-    this.updateDate();
-    setInterval(this.updateDate, 60 * 1000);
-  },
+  async mounted() {
+  await this.fetchTasks();
+},
+
   methods: {
-    create () {
-      const name = this.newTask.trim()
-      if (!name) return
-      const triColumn = store.columns.find(c => c.name.toLowerCase().includes('trier')) || store.columns[0]
-      store.addTaskToColumn(triColumn.id, name, this.taskPriority)
-      this.newTask = ''
+    async fetchTasks() {
+      try {
+        const res = await axiosInstance.get('/tasks');
+        // Deploy in columns
+        this.columns.forEach(c => c.tasks = []); // reset
+        res.data.forEach(task => {
+          const col = this.columns.find(c => c.id === task.status);
+          if (col) col.tasks.push(task);
+        });
+      } catch (err) {
+        console.error('Erreur fetch tasks', err);
+      }
     },
+    async create () {
+    const name = this.newTask.trim()
+    if (!name) return
+
+    try {
+      const res = await axiosInstance.post('/tasks', {
+        title: name,
+        priority: this.taskPriority,
+        status: 'todo'
+      })
+      
+      const createdTask = res.data
+      const todoColumn = this.columns.find(c => c.id === 'todo')
+      todoColumn.tasks.push(createdTask)
+
+      this.newTask = ''
+    }
+    catch (error) {
+      console.error('Error creating task:', error)
+    }
+    },
+
     updateDate() {
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       this.currentDate = new Date().toLocaleDateString("en-EN", options);
     },
+
     getProgress (column) {
       const total = column.tasks?.length || 0
       if (total === 0) return 0
@@ -135,17 +165,41 @@ export default {
       const res = await axiosInstance.get('/auth');
       console.log(res.data.message)
     },
-  async onDragEnd(evt, column) {
+
+    async onDragEnd(evt, column) {
+    // move task
     const movedTask = evt.item.__vue__.task;
+
+    // Check if status changed
     if (movedTask.status !== column.id) {
       movedTask.status = column.id;
-      await axios.put(`/tasks/${movedTask.id}`, movedTask);
+
+      try {
+        await axiosInstance.put(`/tasks/${movedTask.id}`, movedTask);
+        console.log(`Task ${movedTask.id} status updated =${column.id}`);
+      } catch (err) {
+        console.error('Eror during update status', err);
+      }
     }
   },
-  async toggleTaskDone(task, checked) {
-    task.done = !!checked;
-    await axios.put(`/tasks/${task.id}`, task);
-  },
+    async toggleTaskDone(task, checked) {
+        if (checked) {
+          // if checked → suppression
+          await this.deleteTask(task)
+        } else {
+          // else → update
+          await axiosInstance.put(`/tasks/${task.id}`, task)
+        }
+      },
+      async deleteTask(task) {
+        try {
+          await axiosInstance.delete(`/tasks/${task.id}`)
+          const col = this.columns.find(c => c.id === task.status)
+          col.tasks = col.tasks.filter(t => t.id !== task.id)
+        } catch (err) {
+          console.error('Suppression error', err)
+        }
+      },
     goToTask(id){
       this.$router.push({ name: 'tasks', params: { id } })
     }

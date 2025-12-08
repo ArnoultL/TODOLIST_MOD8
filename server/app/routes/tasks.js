@@ -18,11 +18,20 @@ router.get('/',auth, async (req,res)=>{
   res.json(rows);
 });
 
-router.post('/',auth, async (req,res)=>{
-  const {title,status} = req.body;
-  await db.query("INSERT INTO tasks (user_id,title,status) VALUES (?,?,?)",[req.userId,title,status]);
-  res.send("Task added");
-});
+router.post('/', user.controller, async (req, res) => {
+  const { title, priority = 'medium', status = 'todo' } = req.body
+  const [result] = await db.query(
+    'INSERT INTO tasks (title, priority, status, user_id) VALUES (?,?,?,?)',
+    [title, priority, status, req.user.id]
+  )
+  res.json({
+    id: result.insertId,
+    title,
+    priority,
+    status,
+    done: false
+  })
+})
 
 router.put('/:id',auth, async (req,res)=>{
   const {status} = req.body;

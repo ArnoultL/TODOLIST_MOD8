@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from '../api.js';
+import axiosInstance from '../api.js';
 
 export default {
   data() {
