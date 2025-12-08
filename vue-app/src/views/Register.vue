@@ -14,7 +14,7 @@
           placeholder="Password" 
           class="border p-2 w-full mb-3"
         />
-        <button class="btn-primary w-full">Register</button>
+        <button class="btn-primary text-white">Register</button>
       </form>
       <p v-if="message" class="mt-2 text-green-600">{{ message }}</p>
       <p v-if="error" class="mt-2 text-red-600">{{ error }}</p>
