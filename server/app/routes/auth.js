@@ -19,7 +19,12 @@ router.post('/login', async (req,res)=>{
   const match = await bcrypt.compare(password,user.password);
   if(!match) return res.status(401).send("Invalid");
   const token = jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:"1h"});
-  res.json({token});
+  res.cookie("token", token, {httpOnly: true, secure: false});
+  res.json({message: "Welcome"});
 });
+
+router.get('/', async(req, res)=>{
+  res.json({message: "hello guys"});
+})
 
 module.exports = router;

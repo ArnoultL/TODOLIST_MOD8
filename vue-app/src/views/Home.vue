@@ -85,11 +85,15 @@
       </draggable>
     </div>
   </div>
+  <button @click="hello">
+    Hello
+  </button>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
 import store from '../store'
+import axiosInstance from '../api';
 
 export default {
   components: { draggable },
@@ -126,6 +130,10 @@ export default {
       if (total === 0) return 0
       const done = column.tasks.filter(t => t.done).length
       return Math.round((done / total) * 100)
+    },
+    async hello(){
+      const res = await axiosInstance.get('/auth');
+      console.log(res.data.message)
     },
   async onDragEnd(evt, column) {
     const movedTask = evt.item.__vue__.task;
