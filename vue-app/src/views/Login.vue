@@ -5,7 +5,7 @@
       <form @submit.prevent="login">
         <input v-model="username" placeholder="Username" class="border p-2 w-full mb-3"/>
         <input v-model="password" type="password" placeholder="Password" class="border p-2 w-full mb-3"/>
-        <button class="btn-primary w-full">Login</button>
+        <button class="btn-primary text-white">Login</button>
       </form>
       <p v-if="error" class="text-red-500 mt-2">{{ error }}</p>
       <div>
