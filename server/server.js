@@ -20,7 +20,6 @@ const taskRoutes = require('./app/routes/tasks');
 
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
-require('./app/routes/user.route')(app)
 
 app.listen(PORT, () =>{
     console.log(PORT);

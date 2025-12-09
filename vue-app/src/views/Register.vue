@@ -19,6 +19,9 @@
       <p v-if="message" class="mt-2 text-green-600">{{ message }}</p>
       <p v-if="error" class="mt-2 text-red-600">{{ error }}</p>
     </div>
+    <button @click="hello">
+    Hello
+  </button>
   </div>
 </template>
 
@@ -35,6 +38,10 @@ export default {
     }
   },
   methods: {
+    async hello(){
+      const res = await axiosInstance.get('/auth');
+      console.log(res.data.message)
+    },
     async register() {
       try {
         await axiosInstance.post('/auth/register', {

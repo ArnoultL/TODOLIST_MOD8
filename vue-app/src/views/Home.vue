@@ -86,9 +86,7 @@
       </draggable>
     </div>
   </div>
-  <button @click="hello">
-    Hello
-  </button>
+
 </template>
 
 <script>

@@ -2,17 +2,18 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
+const authenticateToken = require('../middleware/authentificateToken');
 const router = express.Router();
 
 router.post('/register', async (req, res) => {
-  const { username, password } = req.body || {};
+  const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ message: 'Username et password requis' });
   }
 
   try {
-    const [rows] = await db.query('SELECT * FROM users WHERE username=?', [username]);
+    const [rows] = await db.query('SELECT * FROM user WHERE username=?', [username]);
     
     if (rows.length > 0) {
       return res.status(409).json({ message: 'User already exists' });
@@ -21,7 +22,7 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const [result] = await db.query(
-      'INSERT INTO users (username, password) VALUES (?, ?)',
+      'INSERT INTO user (username, password) VALUES (?, ?)',
       [username, hashedPassword]
     );
 
@@ -41,12 +42,12 @@ router.post('/login', async (req,res)=>{
   try {
       const [rows] = await db.query("SELECT * FROM users WHERE username=?",[username]);
       
-      if(rows.length===0) return res.status(401).send("Invalid credentials");
+      if(rows.length===0) return res.status(401).json({message: "Invalid credentials"});
       
       const user = rows[0];
       const match = await bcrypt.compare(password,user.password);
       
-      if(!match) return res.status(401).send("Invalid credentials");
+      if(!match) return res.status(401).json({message: "Invalid credentials"});
       
       const token = jwt.sign({id:user.id},process.env.JWT_SECRET,{expiresIn:"1h"});
       
@@ -55,15 +56,18 @@ router.post('/login', async (req,res)=>{
       
   } catch (err) {
       console.error(err);
-      res.status(500).send("Server error");
+      res.status(500).json({message: "Server error"});
   }
 });
 
-router.get('/logout', async(req, res)=>{
+router.get('/logout', authenticateToken, async(req, res)=>{
   res.cookie('token', '', { maxAge: 0 });
-  res.send({
-    message: 'Succes'
+  res.json({
+    message: 'Success'
   });
 });
 
+router.get('/', async (req, res) => {
+  res.json({ message: 'Auth route is working' });
+});
 module.exports = router;
