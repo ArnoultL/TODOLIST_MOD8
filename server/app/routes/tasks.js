@@ -22,7 +22,7 @@ router.post('/', auth, async (req, res) => {
   const { title, priority = 'medium', status = 'todo' } = req.body
   const [result] = await db.query(
     'INSERT INTO tasks (title, priority, status, user_id) VALUES (?,?,?,?)',
-    [title, priority, status, req.user.id]
+    [title, priority, status, req.userId]
   )
   res.json({
     id: result.insertId,

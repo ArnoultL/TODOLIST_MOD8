@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.post('/register', async (req, res) => {
   const { username, password } = req.body
-
   try {
     // Verify if user exists
     const [rows] = await db.query('SELECT * FROM users WHERE username=?', [username])
@@ -47,27 +46,12 @@ router.post('/login', async (req,res)=>{
 });
 
 
-router.post('/login', async (req, res, next)=>{
-  const user = await User.post('/login', {where: {username:req.body.username}})
-  if(!user){
-    return res.status(400).send({
-      message: 'Username not found'
-    })
-  }
-  if(!await bcrypt.compare(req.body.password, user.password)){
-          return res.status(400).send({
-              message: 'Password incorrect'
-             })
-  }
-  const token = jwt.sign({id: user.id}, 'secret')
-  res.cookie('jwt', token,{
-    httpOnly : true,
-    maxAge: 24*60*60*1000
-  })
-})
 
-router.get('/', async(req, res)=>{
-  res.json({message: "hello guys"});
+router.get('/logout', async(req, res)=>{
+  res.cookie('jwt','',{mawAge: 0})
+  res.send({
+    message: 'succes'
+  })
 })
 
 module.exports = router;

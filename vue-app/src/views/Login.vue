@@ -30,7 +30,9 @@
             username: this.username,
             password: this.password
           })
+          // Token
           localStorage.setItem('token', res.data.token)
+          // Redirect to kanban board
           this.$router.push({ name: 'home' })
         } catch (err) {
           console.error('Login failed', err)
