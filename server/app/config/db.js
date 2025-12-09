@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
@@ -9,4 +10,14 @@ const pool = mysql.createPool({
   queueLimit: 0,
   multipleStatements: true
 });
+
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error("ERREUR DB:", err.code);
+  } else {
+    console.log("Connected!");
+    connection.release();
+  }
+});
+
 module.exports = pool.promise();
