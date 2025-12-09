@@ -14,7 +14,7 @@
       <h2>------My Tasks------</h2>
       <ul class="sidebar-list">
         <li v-for="(item, index) in tasks" :key="index">
-          <bouton @click="goToTasks(item.id)">{{ item.name }}, {{ item.id }}</bouton>
+          <button @click="goToTasks(item.id)">{{ item.name }}, {{ item.id }}</button>
         </li>
       </ul>
     </section>

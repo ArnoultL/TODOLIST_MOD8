@@ -1,0 +1,8 @@
+"""faut modifier toute la database pour qu'elle soit cohérente 
+et aussi les fichier dans server/app/routes parce que il n'est pas du tout en liens avec notre DataBase
+Du coup jcp si le reste fonctionne pk j'arrive juste pas à ramner les data de la database, j'suis ptn je bloquer j'en peux plus, aidez moi svp
+Merci de votre compréhension
+Cordialement MOI
+"""
+for i in range(1000):
+    print("1000")

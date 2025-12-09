@@ -53,7 +53,8 @@ h1{
 
 <script>
 import SideBar from './components/SideBar.vue';
-import tache from './tache.json';
+//import tache from './tache.json';
+import TaskDataService from './services/TaskDataService.js';
 
 export default {
   components: {
@@ -62,16 +63,27 @@ export default {
   data () {
     return {
       showSideBar: false,
-      tasks: tache,
+      tasks : {},
       }
   },
+
+  mounted(){
+    TaskDataService.getAll()
+    .then(response => {
+      this.tasks = response.data;
+    }).catch(error => {
+      console.error('Error fetching tasks', error);
+    })
+  },
+
   methods: {
     toggleSideBar (){
       this.showSideBar = !this.showSideBar
     },
     goToTask(p){
       this.$router.push({name: 'tasks', params: {id: p}})
-    }
+    },
+
   }
 }
 </script>

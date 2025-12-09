@@ -110,8 +110,8 @@ export default {
     }
   },
   async mounted() {
-  await this.fetchTasks();
-},
+     await this.fetchTasks();
+  },
 
   methods: {
     async fetchTasks() {

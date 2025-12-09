@@ -1,3 +1,7 @@
+// je pense vrm pas que ce soit utile de garder un store local vu qu'on utilise une base de donnée (c'est un peu redondant)
+// PS , c'est l'AI qui a ecrie le truc au dessus mais il a pas tord le salo
+
+
 import { reactive } from 'vue'
 import tache from './tache.json';
 
