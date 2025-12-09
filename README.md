@@ -45,3 +45,18 @@ Built with **Vue.js**, **Node.js/Express**, and **MySQL** using **Sequelize ORM*
 # Clone the repo
 git clone https://github.com/ArnoultL/TODOLIST_MOD8
 cd TODOLIST_MOD8
+```
+
+## Project structure
+```bash
+TODOLIST_MOD8/
+├── server/        # Backend
+│   ├── app/       # config, models, routes, middleware, utils
+│   ├── server.js
+│   └── seedFromJson.js
+├── vue-app/       # Frontend
+│   ├── src/       # components, views, router, services, store
+│   └── vite.config.js
+└── docs/          # Documentation
+```
+
