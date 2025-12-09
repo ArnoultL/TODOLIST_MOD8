@@ -14,7 +14,7 @@ const routes = [
   { path: '/', name: 'Welcome', component: Welcome, meta: { auth: false } },
   { path : '/home', name : 'home', component : Home, meta: { auth: false } },
   { path : '/apropos', name : 'apropos', component : Wel, meta: { auth: false } },
-  { path : '/addtasks', name: 'addtasks', component: AddTasks, meta: { auth: false } },
+  { path : '/addtasks', name: 'Addtasks', component: AddTasks, meta: { auth: false } },
   { path : '/tasks/:id', name : 'tasks', component : Tasks, props: true, meta: { auth: false } }
 ]
 

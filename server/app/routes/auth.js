@@ -2,14 +2,37 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const db = require('../config/db');
+const User = db.user;
 const router = express.Router();
 
-router.post('/register', async (req,res)=>{
-  const {username,password} = req.body;
-  const hash = await bcrypt.hash(password,10);
-  await db.query("INSERT INTO users (username,password) VALUES (?,?)",[username,hash]);
-  res.send("User registered");
-});
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body
+
+  try {
+    // Verify if user exists
+    const [rows] = await db.query('SELECT * FROM users WHERE username=?', [username])
+    if (rows.length) {
+      return res.status(400).json({ message: 'User already exists' })
+    }
+
+    // Hashed password
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    // Insert in base
+    const [result] = await db.query(
+      'INSERT INTO users (username, password) VALUES (?, ?)',
+      [username, hashedPassword]
+    )
+
+    // Token generation after inscription
+    const token = jwt.sign({ id: result.insertId }, process.env.JWT_SECRET, { expiresIn: '1h' })
+
+    res.json({ token })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: 'Error registering user' })
+  }
+})
 
 router.post('/login', async (req,res)=>{
   const {username,password} = req.body;
@@ -22,6 +45,26 @@ router.post('/login', async (req,res)=>{
   res.cookie("token", token, {httpOnly: true, secure: false});
   res.json({message: "Welcome"});
 });
+
+
+router.post('/login', async (req, res, next)=>{
+  const user = await User.post('/login', {where: {username:req.body.username}})
+  if(!user){
+    return res.status(400).send({
+      message: 'Username not found'
+    })
+  }
+  if(!await bcrypt.compare(req.body.password, user.password)){
+          return res.status(400).send({
+              message: 'Password incorrect'
+             })
+  }
+  const token = jwt.sign({id: user.id}, 'secret')
+  res.cookie('jwt', token,{
+    httpOnly : true,
+    maxAge: 24*60*60*1000
+  })
+})
 
 router.get('/', async(req, res)=>{
   res.json({message: "hello guys"});

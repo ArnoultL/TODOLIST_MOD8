@@ -37,7 +37,7 @@ export default {
   methods: {
     async register() {
       try {
-        await axios.post('/auth/register', {
+        await axiosInstance.post('/auth/register', {
           username: this.username,
           password: this.password
         });

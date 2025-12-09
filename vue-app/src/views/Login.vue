@@ -17,23 +17,26 @@
 </template>
 
 <script>
-import axiosInstance from '../api.js';
-
-export default {
-  data() {
-    return { username: '', password: '', error: '' }
-  },
-  methods: {
-    async login() {
-      try {
-        const res = await axiosInstance.post('/auth/login', { username: this.username, password: this.password });
-        localStorage.setItem('token', res.data.token);
-        this.$router.push('/tasks');
-      } catch {
-        this.error = "Invalid credentials";
+  import axiosInstance from '../api.js'
+  
+  export default {
+    data() {
+      return { username: '', password: '' }
+    },
+    methods: {
+      async login() {
+        try {
+          const res = await axiosInstance.post('/auth/login', {
+            username: this.username,
+            password: this.password
+          })
+          localStorage.setItem('token', res.data.token)
+          this.$router.push({ name: 'home' })
+        } catch (err) {
+          console.error('Login failed', err)
+        }
       }
     }
   }
-}
-</script>
+  </script>
 

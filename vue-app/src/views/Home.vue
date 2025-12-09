@@ -1,7 +1,7 @@
 <template>
   <section class="home-create flex items-center mb-4">
     <form class="home-controls" @submit.prevent="create">
-      <label for="home-new-task" class="sr-only">New Task</label>
+      <label for="home-new-task" class="sr-only">Quick Add</label>
 
       <input 
         id="home-new-task" 
@@ -96,8 +96,9 @@ import draggable from 'vuedraggable'
 import store from '../store'
 import axiosInstance from '../api';
 
+
 export default {
-  components: { draggable },
+  components: { draggable},
   computed: {
     columns () {
       return store.columns
@@ -202,7 +203,8 @@ export default {
       },
     goToTask(id){
       this.$router.push({ name: 'tasks', params: { id } })
-    }
+    },
+    
   }
 }
 </script>

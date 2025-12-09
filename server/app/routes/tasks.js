@@ -18,7 +18,7 @@ router.get('/',auth, async (req,res)=>{
   res.json(rows);
 });
 
-router.post('/', user.controller, async (req, res) => {
+router.post('/', auth, async (req, res) => {
   const { title, priority = 'medium', status = 'todo' } = req.body
   const [result] = await db.query(
     'INSERT INTO tasks (title, priority, status, user_id) VALUES (?,?,?,?)',
