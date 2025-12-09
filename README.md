@@ -1,19 +1,19 @@
-# 📝 TODO List Application - Full Stack (Refactored)
+#  TODO List Application - Full Stack (Refactored)
 
 Modern TODO list application with drag-and-drop, user authentication, and full CRUD operations.
 
-## 🎯 Features
+##  Features
 
-- ✅ **User Authentication** (JWT)
-- ✅ **Personal Columns** (customizable per user)
-- ✅ **Tasks & Subtasks** (hierarchical structure)
-- ✅ **Drag & Drop** (with position persistence)
-- ✅ **Priority System** (low, medium, high)
-- ✅ **Real-time Sync** (frontend ↔ backend)
-- ✅ **Sequelize ORM** (professional database layer)
-- ✅ **RESTful API** (19 endpoints)
+-  **User Authentication** (JWT)
+-  **Personal Columns** (customizable per user)
+-  **Tasks & Subtasks** (hierarchical structure)
+-  **Drag & Drop** (with position persistence)
+-  **Priority System** (low, medium, high)
+-  **Real-time Sync** (frontend ↔ backend)
+-  **Sequelize ORM** (professional database layer)
+-  **RESTful API** (19 endpoints)
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Backend
 - **Node.js** + **Express.js**
@@ -28,7 +28,7 @@ Modern TODO list application with drag-and-drop, user authentication, and full C
 - **vuedraggable** for drag & drop
 - **Vite** build tool
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js (v16+)
