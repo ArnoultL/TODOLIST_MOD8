@@ -40,7 +40,7 @@ router.post('/login', async (req,res)=>{
   const {username,password} = req.body;
   
   try {
-      const [rows] = await db.query("SELECT * FROM users WHERE username=?",[username]);
+      const [rows] = await db.query("SELECT * FROM user WHERE username=?",[username]);
       
       if(rows.length===0) return res.status(401).json({message: "Invalid credentials"});
       
@@ -60,7 +60,7 @@ router.post('/login', async (req,res)=>{
   }
 });
 
-router.get('/logout', authenticateToken, async(req, res)=>{
+router.get('/logout', async(req, res)=>{
   res.cookie('token', '', { maxAge: 0 });
   res.json({
     message: 'Success'
