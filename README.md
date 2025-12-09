@@ -31,6 +31,29 @@ Built with **Vue.js**, **Node.js/Express**, and **MySQL** using **Sequelize ORM*
 - vuedraggable for drag & drop
 - Vite build tool
 
+**API overview**
+
+Auth
+- POST /auth/register – create account
+- POST /auth/login – login
+- GET /auth/logout – logout
+  
+Columns
+- GET /tasks/columns – list columns
+- POST /tasks/columns – create column
+- PUT /tasks/columns/:id – update column
+- DELETE /tasks/columns/:id – delete column
+  
+Tasks
+- POST /tasks/tasks – create task
+- PUT /tasks/tasks/:id – update task
+- DELETE /tasks/tasks/:id – delete task
+  
+Subtasks
+- POST /tasks/subtasks – create subtask
+- PUT /tasks/subtasks/:id – update subtask
+- DELETE /tasks/subtasks/:id – delete subtask
+
 ---
 
 ##  Quick Start
