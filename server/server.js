@@ -11,16 +11,25 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5001;
 
-// Import des routes
+// Import des modeles Sequelize
+const db = require('./app/models');
+
 const authRoutes = require('./app/routes/auth');
 const taskRoutes = require('./app/routes/tasks');
-
 
 app.use('/auth', authRoutes);
 app.use('/tasks', taskRoutes);
 
-app.listen(PORT, () =>{
-    console.log(PORT);
-});
+// Synchronisation de la base de données et demarrage du serveur
+db.sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('Database synchronized');
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Error syncing database:', err);
+  });

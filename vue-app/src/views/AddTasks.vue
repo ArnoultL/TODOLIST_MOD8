@@ -164,12 +164,11 @@ onMounted(async () => {
     const data = await response.json()
     categories.value = data
   } catch (err) {
-    console.warn('Erreur de chargement du fichier JSON:', err)
+    // Erreur de chargement du fichier JSON
   }
 })
 
 function submitTask() {
-  console.log('Nouvelle tâche :', task.value)
   alert(
     `Tâche "${task.value.name}" ajoutée à ${task.value.category} → ${task.value.subcategory}`
   )

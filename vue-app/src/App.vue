@@ -1,13 +1,19 @@
 <template>
   <header class="flex items-center justify-between mb-6">
     <div class="flex items-center gap-4">
-      <h1><router-link to="/Home" class="hover:underline">My ToDo App</router-link></h1>
+      <h1><router-link to="/" class="hover:underline">My ToDo App</router-link></h1>
     </div>
     <span>
     <nav class = "hidden sm:flex gap-4 items-center">
-      <router-link to="/Home" class="text-blue-600 hover:underline">Home</router-link>
+      <router-link to="/" class="text-blue-600 hover:underline">Home</router-link>
       <router-link to="/login" class="text-blue-600 hover:underline">Login</router-link>
       <router-link to="/apropos" class="text-blue-600 hover:underline">About us</router-link>
+      <button
+        @click="logout"
+        class="px-4 py-2 !bg-[#083048] text-white rounded-lg transition-colors duration-200 flex items-center gap-2"
+      >
+        Logout
+      </button>
       <button class="showbar" @click="toggleSideBar">☰</button>
     </nav>
   </span>
@@ -15,17 +21,15 @@
   <main>
     <router-view />
   </main>
-
-    
   <footer class="w-full mx-auto  border-t border-gray-100 mt-1 max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
-        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">All Rights Reserved ©2025 .
-      </span>
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">All Rights Reserved ©2025 .
+  </span>
   </footer>
   <SideBar
-  v-if="showSideBar"
-  :toggle="toggleSideBar"
-  :tasks="tasks"
-  :goToTasks="goToTask"
+    v-if="showSideBar"
+    :toggle="toggleSideBar"
+    :tasks="tasks"
+    :goToTasks="goToTask"
   />
 </template>
 
@@ -53,8 +57,7 @@ h1{
 
 <script>
 import SideBar from './components/SideBar.vue';
-//import tache from './tache.json';
-import TaskDataService from './services/TaskDataService.js';
+import store from './store.js';
 
 export default {
   components: {
@@ -63,17 +66,14 @@ export default {
   data () {
     return {
       showSideBar: false,
-      tasks : {},
-      }
+    }
   },
 
-  mounted(){
-    TaskDataService.getAll()
-    .then(response => {
-      this.tasks = response.data;
-    }).catch(error => {
-      console.error('Error fetching tasks', error);
-    })
+  computed: {
+    tasks() {
+      // Retourner les tâches depuis le store
+      return store.tasks || []
+    }
   },
 
   methods: {
@@ -83,7 +83,10 @@ export default {
     goToTask(p){
       this.$router.push({name: 'tasks', params: {id: p}})
     },
-
+    logout() {
+      localStorage.removeItem('token')
+      this.$router.push('/login')
+    }
   }
 }
 </script>

@@ -5,16 +5,15 @@
         <h2 class="sidebar-title">Menu</h2>
         <div class="button-group">
           <button class="nav-button" @click="toggle(); goToPage()">⇢</button>
-          <button class="close-button" @click="toggle">&times;</button>
+          <button class="close-button" @click="toggle">×</button>
         </div>
       </div>
     </header>
     <section class="sidebar-content">
-      <router-link to="/addtasks" class="text-blue-600 hover:underline">Add Tasks</router-link>
       <h2>------My Tasks------</h2>
       <ul class="sidebar-list">
         <li v-for="(item, index) in tasks" :key="index">
-          <button @click="goToTasks(item.id)">{{ item.name }}, {{ item.id }}</button>
+          <button @click="goToTasks(item.id)">{{ item.name }}</button>
         </li>
       </ul>
     </section>
@@ -23,10 +22,9 @@
 
 <script>
 export default {
-  props: ['toggle','tasks','goToTasks'],
+  props: ['toggle', 'tasks', 'goToTasks'],
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     goToPage() {
@@ -37,9 +35,6 @@ export default {
 </script>
 
 <style scoped>
-*{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
 .sidebar {
   position: fixed;
   top: 0;
@@ -72,7 +67,6 @@ export default {
   display: flex;
   gap: 0.5rem;
 }
-
 
 
 .nav-button:hover {

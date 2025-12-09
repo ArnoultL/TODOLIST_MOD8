@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "body-parser": "^2.2.1",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "loadash": "^1.0.0",
+    "lodah": "^0.0.1-security",
+    "lodash": "^4.17.21"
   }
 }

@@ -9,13 +9,12 @@ import Tasks from '../views/Tasks.vue'
 import AddTasks from '../views/AddTasks.vue'
 
 const routes = [
-  { path: '/login', name: 'Login', component: Login },
-  { path : '/register', name:'register', component: Register },
-  { path: '/', name: 'Welcome', component: Welcome, meta: { auth: false } },
-  { path : '/home', name : 'home', component : Home, meta: { auth: false } },
-  { path : '/apropos', name : 'apropos', component : Wel, meta: { auth: false } },
-  { path : '/addtasks', name: 'Addtasks', component: AddTasks, meta: { auth: false } },
-  { path : '/tasks/:id', name : 'tasks', component : Tasks, props: true, meta: { auth: false } }
+  { path: '/login', name: 'Login', component: Login, meta: { requiresAuth: false } },
+  { path: '/register', name: 'register', component: Register, meta: { requiresAuth: false } },
+  { path: '/', name: 'home', component: Home, meta: { requiresAuth: true } },
+  { path: '/apropos', name: 'apropos', component: Wel, meta: { requiresAuth: true } },
+  { path: '/addtasks', name: 'Addtasks', component: AddTasks, meta: { requiresAuth: true } },
+  { path: '/tasks/:id', name: 'tasks', component: Tasks, props: true, meta: { requiresAuth: true } }
 ]
 
 const router = createRouter({
@@ -23,15 +22,20 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((nextRoute, to, next) => {
-  const authNeeded = nextRoute.meta.auth
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+  const isAuthenticated = !!token
+  const requiresAuth = to.meta.requiresAuth
 
-  if (!authNeeded) {
-    // Si l'authentification pour aller sur la route n'est pas requise, alors on autorise la navigation
+  if (requiresAuth && !isAuthenticated) {
+    next('/login')
+  }
+  else if (isAuthenticated && (to.path === '/login' || to.path === '/register')) {
+    next('/')
+  }
+  else {
     next()
   }
-
-  next('/login')
 })
 
 export default router
