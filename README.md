@@ -5,18 +5,18 @@ Built with **Vue.js**, **Node.js/Express**, and **MySQL** using **Sequelize ORM*
 
 ---
 
-## ✨ Features
-- 🔐 User authentication with JWT + bcrypt
-- 📂 Personal columns per user (customizable)
-- ✅ Tasks & subtasks with priorities (low / medium / high)
-- 🎯 Drag & drop with saved positions
-- 🔄 Real‑time sync between frontend and backend
-- 🌐 RESTful API (19 endpoints)
-- 🗄️ Clean database schema with cascade deletes
+##  Features
+-  User authentication with JWT + bcrypt
+-  Personal columns per user (customizable)
+-  Tasks & subtasks with priorities (low / medium / high)
+-  Drag & drop with saved positions
+-  Real‑time sync between frontend and backend
+-  RESTful API (19 endpoints)
+-  Clean database schema with cascade deletes
 
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 **Backend**
 - Node.js + Express
@@ -33,7 +33,7 @@ Built with **Vue.js**, **Node.js/Express**, and **MySQL** using **Sequelize ORM*
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Node.js v16+
